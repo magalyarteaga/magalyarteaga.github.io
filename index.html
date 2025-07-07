@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cartilla de Ahorro Dinámica</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Cartilla de Ahorro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <div class="controls">
-    <label>Escribe tu meta de ahorro:
+    <label>Meta de ahorro:
       <input type="text" id="meta" placeholder="Ej. Comprar una laptop" />
     </label>
 
@@ -17,11 +16,11 @@
       <input type="number" id="goal" value="1000" min="1" />
     </label>
 
-    <label>¿En cuántas casillas quieres dividir tu ahorro? (máximo 72):
-      <input type="number" id="numCasillas" value="72" min="1" max="72" />
+    <label>Número de casillas (máximo 150):
+      <input type="number" id="numCasillas" value="72" min="1" max="150" />
     </label>
 
-    <label>Selecciona los montos que quieres usar:</label>
+    <label>Selecciona montos:</label>
     <div class="checkboxes">
       <label><input type="checkbox" class="monto" value="1" checked> 1</label>
       <label><input type="checkbox" class="monto" value="2" checked> 2</label>
@@ -32,15 +31,26 @@
       <label><input type="checkbox" class="monto" value="100"> 100</label>
     </div>
 
+    <label>Estilo de color:</label>
+    <select id="tema">
+      <option value="neutro" selected>Neutro</option>
+      <option value="mujer">Mujer</option>
+      <option value="varon">Varón</option>
+    </select>
+
     <button onclick="generarCasillas()">Generar Casillas</button>
-    <button class="btn" onclick="window.print()">Guardar como PDF</button>
+    <button class="btn" onclick="window.print()">Imprimir</button>
+    <button class="btn" onclick="descargarPDF()">Guardar como PDF</button>
   </div>
 
-  <div class="cartilla">
+  <div class="cartilla" id="cartilla">
     <div id="metaTexto" class="meta-display">Meta: </div>
+    <div id="montoMeta" class="meta-display">Monto: </div>
     <div class="grid-container">
       <table id="grid"></table>
     </div>
+    <div id="fraseAhorro" class="frase-motivadora"></div>
+    <img id="imagenAhorro" alt="Niños ahorrando felizmente" />
   </div>
 
   <div class="summary">
