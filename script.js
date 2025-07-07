@@ -22,6 +22,13 @@ function aplicarClaseCartilla(tema) {
 }
 
 function generarCasillas() {
+ 
+   if (numCasillas < 75) {
+  document.getElementById("imagenAhorro").style.display = "block";
+} else {
+  document.getElementById("imagenAhorro").style.display = "none";
+}
+  
   const grid = document.getElementById("grid");
   grid.innerHTML = "";
 
@@ -32,13 +39,7 @@ function generarCasillas() {
 
   document.getElementById("metaTexto").innerText = "Meta: " + metaTexto;
   document.getElementById("montoMeta").innerText = "Monto: " + total;
-
-  if (numCasillas < 75) {
-  document.getElementById("imagenAhorro").style.display = "block";
-} else {
-  document.getElementById("imagenAhorro").style.display = "none";
-}
-  
+ 
   const columnas = 15;
   const filas = Math.ceil(numCasillas / columnas);
   const seleccionados = Array.from(document.querySelectorAll(".monto:checked")).map(cb => parseInt(cb.value));
@@ -137,12 +138,14 @@ function actualizarResumen() {
 function descargarPDF() {
   const element = document.getElementById("cartilla");
 
-  const opt = {
-    margin:       [10, 3, 5, 3], // top, left, bottom, right en mm
-    filename:     'cartilla_ahorro.pdf',
-    image:        { type: 'png', quality: 1 },
-    html2canvas:  { scale: 2, scrollY: -window.scrollY },
-    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-  html2pdf().set(opt).from(element).save();
+  // Espera para que la imagen cargue completamente
+  setTimeout(() => {
+    html2pdf().set({
+      margin: [3, 10, 3, 5],
+      filename: 'cartilla_ahorro.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, scrollY: -window.scrollY },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }).from(element).save();
+  }, 300); // Espera de 300ms
 }
