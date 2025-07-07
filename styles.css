@@ -170,7 +170,7 @@ td.cell.saved {
   .cartilla {
     width: 20cm !important;
     height: 18cm !important;
-    padding: 0.5cm !important;
+    padding: 1cm !important;
     font-size: 10pt;
     overflow: hidden;
     margin: auto;
@@ -179,14 +179,14 @@ td.cell.saved {
 
   table {
     width: auto !important;
-    font-size: 10pt;
+    font-size: 9pt;
     page-break-inside: avoid;
     margin: auto;
   }
 
   th, td {
-    width: 45px !important;
-    height: 45px !important;
+    width: 40px !important;
+    height: 40px !important;
     padding: 4px !important;
     box-sizing: border-box;
   }
