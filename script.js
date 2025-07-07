@@ -2,10 +2,23 @@ let montos = [];
 let marcados = [];
 
 function aplicarTema(tema) {
+  const estiloMujer = { fondo: "#fff5fa", borde: "#fbb8d2", celdas: "#ffccdd" };
+  const estiloVaron = { fondo: "#f0f7ff", borde: "#a3c9ff", celdas: "#cce0ff" };
+  let colores = {};
+  if (tema === "mujer") colores = estiloMujer;
+  else if (tema === "varon") colores = estiloVaron;
+  else return;
+  document.body.style.background = colores.fondo;
+  const cartilla = document.getElementById("cartilla");
+  cartilla.style.borderColor = colores.borde;
+  document.querySelectorAll("td.cell").forEach(td => td.style.background = colores.celdas);
+}
+
+function aplicarClaseCartilla(tema) {
   const cartilla = document.getElementById("cartilla");
   cartilla.classList.remove("mujer", "varon");
   if (tema === "mujer") cartilla.classList.add("mujer");
-  else if (tema === "varon") cartilla.classList.add("varon");
+  if (tema === "varon") cartilla.classList.add("varon");
 }
 
 function generarCasillas() {
@@ -13,28 +26,28 @@ function generarCasillas() {
   grid.innerHTML = "";
 
   const total = parseFloat(document.getElementById("goal").value);
-  const metaTexto = document.getElementById("meta").value.trim();
+  const metaTexto = document.getElementById("meta").value;
   const numCasillas = parseInt(document.getElementById("numCasillas").value);
-
-  const seleccionados = Array.from(document.querySelectorAll(".monto:checked")).map(cb => parseInt(cb.value));
-  if (seleccionados.length === 0) {
-    alert("Selecciona al menos un monto.");
-    return;
-  }
+  if (numCasillas < 1 || numCasillas > 150) return;
 
   document.getElementById("metaTexto").innerText = "Meta: " + metaTexto;
   document.getElementById("montoMeta").innerText = "Monto: " + total;
 
-  montos = [];
-  for (let i = 0; i < numCasillas; i++) {
-    let random = seleccionados[Math.floor(Math.random() * seleccionados.length)];
-    montos.push(random);
+  const columnas = 15;
+  const filas = Math.ceil(numCasillas / columnas);
+  const seleccionados = Array.from(document.querySelectorAll(".monto:checked")).map(cb => parseInt(cb.value));
+  if (seleccionados.length === 0) return;
+
+  montos = distribuirMontos(total, numCasillas, seleccionados);
+
+  // Si no pudo generar combinación exacta, llena aleatoriamente
+  if (montos.length === 0) {
+    for (let i = 0; i < numCasillas; i++) {
+      montos.push(seleccionados[Math.floor(Math.random() * seleccionados.length)]);
+    }
   }
 
   marcados = Array(numCasillas).fill(false);
-
-  const columnas = 15;
-  const filas = Math.ceil(numCasillas / columnas);
 
   const headerRow = document.createElement("tr");
   headerRow.appendChild(document.createElement("th"));
@@ -63,18 +76,40 @@ function generarCasillas() {
     grid.appendChild(row);
   }
 
-  document.getElementById("fraseAhorro").innerText = numCasillas <= 120 ? "¡Cada moneda cuenta, tu futuro lo agradecerá!" : "";
+  const tema = document.getElementById("tema").value;
+  aplicarTema(tema);
+  aplicarClaseCartilla(tema);
 
-  const imagen = document.getElementById("imagenAhorro");
-  if (numCasillas < 75) {
-    imagen.src = "https://img.freepik.com/premium-vector/happy-kids-saving-money_179970-1480.jpg";
-    imagen.style.display = "block";
-  } else {
-    imagen.style.display = "none";
-  }
+  const frase = document.getElementById("fraseAhorro");
+  frase.innerText = numCasillas <= 120 ? "¡Cada moneda cuenta, tu futuro lo agradecerá!" : "";
 
-  aplicarTema(document.getElementById("tema").value);
+  const img = document.getElementById("imagenAhorro");
+  img.style.display = numCasillas < 75 ? "block" : "none";
+
   actualizarResumen();
+}
+
+function distribuirMontos(total, cantidad, valoresPosibles) {
+  let montos = [], suma = 0;
+  let intentos = 0;
+  while (montos.length < cantidad && intentos < 1000) {
+    intentos++;
+    let restante = total - suma;
+    let min = Math.min(...valoresPosibles);
+    let posibles = valoresPosibles.filter(v => v <= restante && (restante - v) >= (cantidad - montos.length - 1) * min);
+    if (montos.length === cantidad - 1 && valoresPosibles.includes(restante)) {
+      montos.push(restante); break;
+    }
+    if (posibles.length === 0) {
+      montos = [];
+      suma = 0;
+      continue;
+    }
+    let val = posibles[Math.floor(Math.random() * posibles.length)];
+    montos.push(val); suma += val;
+  }
+  if (montos.length !== cantidad || suma !== total) return [];
+  return montos.sort(() => Math.random() - 0.5);
 }
 
 function toggle(index, td) {
@@ -94,5 +129,14 @@ function actualizarResumen() {
 }
 
 function descargarPDF() {
-  window.print(); // usa print como forma básica de exportación
+  const element = document.getElementById("cartilla");
+
+  const opt = {
+    margin:       [10, 3, 5, 3], // top, left, bottom, right en mm
+    filename:     'cartilla_ahorro.pdf',
+    image:        { type: 'png', quality: 1 },
+    html2canvas:  { scale: 2, scrollY: -window.scrollY },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(element).save();
 }

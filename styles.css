@@ -1,0 +1,197 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 1rem;
+  color: #333;
+}
+
+.cartilla {
+  border: 2px solid #999;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 20cm;
+  height: 18cm;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.cartilla.mujer {
+  background-color: #fff5fa;  /* rosado muy claro */
+  border-color: #fbb8d2;
+  color: #660033;
+}
+
+.cartilla.varon {
+  background-color: #f0f7ff;  /* celeste claro */
+  border-color: #a3c9ff;
+  color: #003366;
+}
+
+.meta-display {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0.3rem 0;
+}
+
+.controls {
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input, select, button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grid-container {
+  overflow-x: auto;
+  margin: auto;
+  width: fit-content;
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+th, td {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+th {
+  background-color: #cce5ff;
+}
+
+td.cell {
+  border: 2px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+td.cell.saved {
+  background: #d9ead3;
+  border-color: #6aa84f;
+  font-weight: bold;
+  color: #38761d;
+}
+
+.summary {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn {
+  display: block;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.frase-motivadora {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#imagenAhorro {
+  display: none;
+  width: 150px;
+  margin: 1rem auto 0;
+  border-radius: 12px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .controls {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  input, select, button {
+    font-size: 0.9rem;
+  }
+
+  .meta-display {
+    font-size: 1.4rem;
+  }
+
+  th, td {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Impresión */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: none;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 1cm;
+  }
+
+  .controls,
+  .btn,
+  .summary {
+    display: none !important;
+  }
+
+  .cartilla {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    padding: 0.5cm !important;
+    font-size: 12pt;
+    overflow: visible !important;
+    page-break-inside: avoid;
+  }
+
+  table {
+    width: 100% !important;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+
+  th, td {
+    width: auto !important;
+    height: auto !important;
+    padding: 4px !important;
+  }
+
+  #imagenAhorro {
+    display: block !important;
+    max-width: 150px !important;
+    margin: 0.5rem auto !important;
+  }
+}

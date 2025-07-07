@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cartilla de Ahorro</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <div class="controls">
     <label>Meta de ahorro:
       <input type="text" id="meta" placeholder="Ej. Comprar una laptop" />
@@ -27,8 +28,8 @@
       <label><input type="checkbox" class="monto" value="5" checked> 5</label>
       <label><input type="checkbox" class="monto" value="10" checked> 10</label>
       <label><input type="checkbox" class="monto" value="20" checked> 20</label>
-      <label><input type="checkbox" class="monto" value="50"> 50</label>
-      <label><input type="checkbox" class="monto" value="100"> 100</label>
+      <label><input type="checkbox" class="monto" value="50" checked> 50</label>
+      <label><input type="checkbox" class="monto" value="100" checked> 100</label>
     </div>
 
     <label>Estilo de color:</label>
@@ -39,8 +40,8 @@
     </select>
 
     <button onclick="generarCasillas()">Generar Casillas</button>
+    <button class="btn" onclick="descargarPDF()">Guardar en PDF</button>
     <button class="btn" onclick="window.print()">Imprimir</button>
-    <button class="btn" onclick="descargarPDF()">Guardar como PDF</button>
   </div>
 
   <div class="cartilla" id="cartilla">
@@ -50,7 +51,7 @@
       <table id="grid"></table>
     </div>
     <div id="fraseAhorro" class="frase-motivadora"></div>
-    <img id="imagenAhorro" alt="Niños ahorrando felizmente" />
+    <img id="imagenAhorro" src="https://img.freepik.com/premium-vector/happy-kids-saving-money_179970-1480.jpg" alt="Ahorro" />
   </div>
 
   <div class="summary">
@@ -58,6 +59,7 @@
     <h2>Progreso: <span id="progreso">0%</span></h2>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
