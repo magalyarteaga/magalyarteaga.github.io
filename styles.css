@@ -151,8 +151,8 @@ td.cell.saved {
 /* Impresión */
 @media print {
   body {
-    margin: 0;
-    padding: 0;
+    margin: 1;
+    padding: 1;
     background: none;
   }
 
