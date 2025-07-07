@@ -33,6 +33,12 @@ function generarCasillas() {
   document.getElementById("metaTexto").innerText = "Meta: " + metaTexto;
   document.getElementById("montoMeta").innerText = "Monto: " + total;
 
+  if (numCasillas < 75) {
+  document.getElementById("imagenAhorro").style.display = "block";
+} else {
+  document.getElementById("imagenAhorro").style.display = "none";
+}
+  
   const columnas = 15;
   const filas = Math.ceil(numCasillas / columnas);
   const seleccionados = Array.from(document.querySelectorAll(".monto:checked")).map(cb => parseInt(cb.value));
