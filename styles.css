@@ -151,8 +151,8 @@ td.cell.saved {
 /* Impresión */
 @media print {
   body {
-    margin: 1;
-    padding: 1;
+    margin: 0;
+    padding: 0;
     background: none;
   }
 
@@ -179,7 +179,7 @@ td.cell.saved {
 
   table {
     width: 100% !important;
-    font-size: 10pt;
+    font-size: 20pt;
     page-break-inside: avoid;
   }
 
