@@ -2,8 +2,8 @@ let montos = [];
 let marcados = [];
 
 function aplicarTema(tema) {
-  const estiloMujer = { fondo: "#fff5fa", borde: "#fbb8d2", celdas: "#ffccdd" };
-  const estiloVaron = { fondo: "#f0f7ff", borde: "#a3c9ff", celdas: "#cce0ff" };
+  const estiloMujer = { fondo: "#fff5fa", borde: "#fbb8d2", celdas: "#fcfafa" };
+  const estiloVaron = { fondo: "#f0f7ff", borde: "#a3c9ff", celdas: "#fcfafa" };
   let colores = {};
   if (tema === "mujer") colores = estiloMujer;
   else if (tema === "varon") colores = estiloVaron;
