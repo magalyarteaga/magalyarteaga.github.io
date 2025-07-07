@@ -168,25 +168,27 @@ td.cell.saved {
   }
 
   .cartilla {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
+    width: 20cm !important;
+    height: 18cm !important;
     padding: 0.5cm !important;
-    font-size: 12pt;
-    overflow: visible !important;
+    font-size: 10pt;
+    overflow: hidden;
+    margin: auto;
     page-break-inside: avoid;
   }
 
   table {
-    width: 100% !important;
+    width: auto !important;
     font-size: 10pt;
     page-break-inside: avoid;
+    margin: auto;
   }
 
   th, td {
-    width: auto !important;
-    height: auto !important;
+    width: 45px !important;
+    height: 45px !important;
     padding: 4px !important;
+    box-sizing: border-box;
   }
 
   #imagenAhorro {
@@ -195,4 +197,3 @@ td.cell.saved {
     margin: 0.5rem auto !important;
   }
 }
-
