@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cartilla de Ahorro Dinámica</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="controls">
+    <label>Escribe tu meta de ahorro:
+      <input type="text" id="meta" placeholder="Ej. Comprar una laptop" />
+    </label>
+
+    <label>Monto total a ahorrar:
+      <input type="number" id="goal" value="1000" min="1" />
+    </label>
+
+    <label>¿En cuántas casillas quieres dividir tu ahorro? (máximo 72):
+      <input type="number" id="numCasillas" value="72" min="1" max="72" />
+    </label>
+
+    <label>Selecciona los montos que quieres usar:</label>
+    <div class="checkboxes">
+      <label><input type="checkbox" class="monto" value="1" checked> 1</label>
+      <label><input type="checkbox" class="monto" value="2" checked> 2</label>
+      <label><input type="checkbox" class="monto" value="5" checked> 5</label>
+      <label><input type="checkbox" class="monto" value="10" checked> 10</label>
+      <label><input type="checkbox" class="monto" value="20" checked> 20</label>
+      <label><input type="checkbox" class="monto" value="50"> 50</label>
+      <label><input type="checkbox" class="monto" value="100"> 100</label>
+    </div>
+
+    <button onclick="generarCasillas()">Generar Casillas</button>
+    <button class="btn" onclick="window.print()">Guardar como PDF</button>
+  </div>
+
+  <div class="cartilla">
+    <div id="metaTexto" class="meta-display">Meta: </div>
+    <div class="grid-container">
+      <table id="grid"></table>
+    </div>
+  </div>
+
+  <div class="summary">
+    <h2>Total Ahorrado: <span id="ahorrado">0</span></h2>
+    <h2>Progreso: <span id="progreso">0%</span></h2>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

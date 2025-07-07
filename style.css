@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  margin: 0;
+  padding: 1rem;
+  color: #333;
+}
+.cartilla {
+  border: 2px solid #999;
+  border-radius: 10px;
+  padding: 1rem;
+  max-width: 650px;
+  margin: 1rem auto;
+  background-color: #fff;
+}
+.meta-display {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+.controls {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+input[type="number"], input[type="text"], button {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.checkboxes label {
+  font-size: 0.9rem;
+}
+.grid-container {
+  overflow-x: auto;
+  margin: auto;
+  width: fit-content;
+}
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+th, td {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 6px;
+}
+th {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  background-color: #cce5ff;
+}
+td.cell {
+  border: 2px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+td.cell.saved {
+  background: #d9ead3;
+  border-color: #6aa84f;
+  font-weight: bold;
+  color: #38761d;
+}
+.summary {
+  text-align: center;
+  margin-top: 1rem;
+}
+.btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media print {
+  .controls, .btn, .summary {
+    display: none;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
