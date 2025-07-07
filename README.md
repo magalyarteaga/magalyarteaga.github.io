@@ -3,8 +3,8 @@
 ## Logos de la Institución y del Grupo Emprendedor
 
 <p align="center">
-  <img src="images/logo_institucion.jpg" alt="Logo Institución" width="150" style="margin-right: 30px;" />
-  <img src="images/logo_empresa.png" alt="Logo Grupo Emprendedor" width="150" />
+  <img src="Images/logo_institucion.jpg" alt="Logo Institución" width="150" style="margin-right: 30px;" />
+  <img src="Images/logo_empresa.png" alt="Logo Grupo Emprendedor" width="150" />
 </p>
 
 ---
