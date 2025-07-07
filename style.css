@@ -5,77 +5,101 @@ body {
   padding: 1rem;
   color: #333;
 }
+
 .cartilla {
   border: 2px solid #999;
   border-radius: 10px;
   padding: 1rem;
-  max-width: 650px;
-  margin: 1rem auto;
+  width: 20cm;
+  height: 18cm;
+  box-sizing: border-box;
   background-color: #fff;
+  margin: auto;
+  overflow-y: auto;
 }
+
+.cartilla.mujer {
+  background-color: #ffe6f0;
+  border-color: #ff99cc;
+  color: #880044;
+}
+
+.cartilla.varon {
+  background-color: #e6f0ff;
+  border-color: #3399ff;
+  color: #003366;
+}
+
 .meta-display {
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
   text-align: center;
-  font-size: 2rem;
-  margin: 1rem 0;
+  font-size: 1.8rem;
+  margin: 0.3rem 0;
 }
+
 .controls {
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-input[type="number"], input[type="text"], button {
+
+input, select, button {
   padding: 0.5rem;
   font-size: 1rem;
 }
+
 .checkboxes {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-.checkboxes label {
-  font-size: 0.9rem;
-}
+
 .grid-container {
   overflow-x: auto;
   margin: auto;
   width: fit-content;
 }
+
 table {
   border-collapse: collapse;
   margin: auto;
 }
+
 th, td {
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   text-align: center;
   vertical-align: middle;
-  border-radius: 6px;
+  border-radius: 4px;
 }
+
 th {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-weight: bold;
   background-color: #cce5ff;
 }
+
 td.cell {
   border: 2px solid #ccc;
   background: #fff;
   cursor: pointer;
+  user-select: none;
 }
+
 td.cell.saved {
   background: #d9ead3;
   border-color: #6aa84f;
   font-weight: bold;
   color: #38761d;
 }
+
 .summary {
   text-align: center;
   margin-top: 1rem;
 }
+
 .btn {
   display: block;
   margin: 1rem auto;
@@ -87,12 +111,19 @@ td.cell.saved {
   border-radius: 4px;
   cursor: pointer;
 }
-@media print {
-  .controls, .btn, .summary {
-    display: none;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-  }
+
+.frase-motivadora {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#imagenAhorro {
+  display: none;
+  width: 150px;
+  margin: 1rem auto 0;
+  border-radius: 12px;
+  display: block;
 }
